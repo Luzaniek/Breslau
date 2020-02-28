@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class SalonPage {
 
     @FindBy(linkText = "Spotkania")
@@ -56,23 +58,22 @@ public class SalonPage {
 
     public String getTitle() {
         return driver.getTitle();
-
-
     }
 
     public void goToList() {
         lista.click();
 
-
     }
 
-
     public void checkingMeeting(String ppp) throws InterruptedException {
-
         driver.findElement(By.partialLinkText(ppp)).click();
-
         Thread.sleep(4000);
+    }
 
+    public void countPictures(String numerSpotkania){
+        List lista = driver.findElements(By.tagName("img"));
+        int k = lista.size();
+        System.out.println("Liczba zdjęć Salonu nr: " + numerSpotkania + " to: " + (k-1));
 
     }
 

@@ -10,6 +10,8 @@ import org.testng.annotations.Test;
 import pages.objects.SalonPage;
 import pages.objects.StartPage;
 
+import java.util.List;
+
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -59,7 +61,7 @@ public class FirstBreslauSalonTest extends TestBase {
         driver.navigate().back();
         salonPage.goToKontakt();
         System.out.println(salonPage.getTitle());
-        assertEquals(salonPage.getTitle(),titleKontakt);
+        assertEquals(salonPage.getTitle(), titleKontakt);
         Thread.sleep(1000);
 
         driver.navigate().back();
@@ -69,31 +71,41 @@ public class FirstBreslauSalonTest extends TestBase {
 
 
         driver.navigate().to(urlSalon);
-        assertEquals(salonPage.getTitle(),titleSalon);
+        assertEquals(salonPage.getTitle(), titleSalon);
         System.out.println(salonPage.getTitle());
         salonPage.goToSpotkania();
         System.out.println(salonPage.getTitle());
-        assertEquals(salonPage.getTitle(),titleSpotkania );
+        assertEquals(salonPage.getTitle(), titleSpotkania);
 
         salonPage.goToList();
         System.out.println(salonPage.getTitle());
         assertEquals(salonPage.getTitle(), titleLista);
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
 
-        for(int i=401; i < 436; i++) {
-            String ccc = String.valueOf(i);
-            salonPage.checkingMeeting(ccc);
-            Thread.sleep(2000);
-            System.out.println(driver.getTitle());
-            assertTrue(driver.getTitle().contains(ccc));
-            driver.navigate().back();
+//        for(int i=401; i < 410; i++) {
+//            String ccc = String.valueOf(i);
+//            salonPage.checkingMeeting(ccc);
+//            Thread.sleep(1000);
+//            System.out.println(driver.getTitle());
+//            assertTrue(driver.getTitle().contains(ccc));
+//            driver.navigate().back();
+//        }
+    }
+        @Test
+                public void countingPicturesTest() throws InterruptedException {
+
+        String numerSpotkania = "409";
+        driver.navigate().to(urlSalon);
+            SalonPage salonPage = new SalonPage(driver);
+            salonPage.goToSpotkania();
+            salonPage.goToList();
+            salonPage.checkingMeeting(numerSpotkania);
+            salonPage.countPictures(numerSpotkania);
         }
-
-
 
 
     }
 
 
-}
+
