@@ -95,7 +95,7 @@ public class FirstBreslauSalonTest extends TestBase {
         @Test
                 public void countingPicturesTest() throws InterruptedException {
 
-        String numerSpotkania = "409";
+        String numerSpotkania = "402";
         driver.navigate().to(urlSalon);
             SalonPage salonPage = new SalonPage(driver);
             salonPage.goToSpotkania();
